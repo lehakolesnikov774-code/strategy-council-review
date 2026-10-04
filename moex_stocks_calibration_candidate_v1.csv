@@ -1,47 +1,46 @@
-<PARSED TEXT FOR SHEET: 1 / 1 TABS
-TAB NAME: moex_stocks_calibration_candidate_v1.csv>index,section,key,horizon,value
-0,metadata,profile,,MOEX_STOCKS_CAL_V1
-1,metadata,architecture_sha256,,d43c71e82f40b519760dbc97a09c0e13e0dc436aa4610c062852a2bceb024f3a
-2,metadata,market,,MOEX_STOCKS
-3,metadata,instruments,,"SBER,ROSN,GAZP,NVTK,LKOH,OZON"
-4,window,trading_days,,180
-5,window,from,,2026-01-26
-6,window,to,,2026-10-02
-7,validation,warmup_days,,60
-8,validation,folds,,4
-9,validation,fold_days,,30
-10,validation,cases,,11472
-11,config,top_k,,20
-12,config,base_days,,180
-13,config,sigma,,1.5
-14,config,half_life_days,,180.0
-15,config,drift_z_threshold,,3.0
-16,config,min_n_independent,30m,10
-17,config,min_n_independent,60m,10
-18,config,min_n_independent,90m,10
-19,config,min_n_independent,120m,10
-20,config,min_weighted_ess,30m,6.0
-21,config,min_weighted_ess,60m,6.0
-22,config,min_weighted_ess,90m,6.0
-23,config,min_weighted_ess,120m,6.0
-24,metrics,coverage_q10_q90,30m,0.7388
-25,metrics,coverage_q10_q90,60m,0.7591
-26,metrics,coverage_q10_q90,90m,0.7591
-27,metrics,coverage_q10_q90,120m,0.7636
-28,metrics,default_pooled_coverage,,0.7192
-29,metrics,candidate_pooled_coverage,,0.7551
-30,metrics,default_interval_score,,37.3275
-31,metrics,candidate_interval_score,,34.4936
-32,metrics,default_median_abs_error_atr,,4.2672
-33,metrics,candidate_median_abs_error_atr,,4.062
-34,metrics,default_median_ess,,13.1229
-35,metrics,candidate_median_ess,,19.8009
-36,metrics,sign_accuracy,30m,0.4899
-37,metrics,sign_accuracy,60m,0.4937
-38,metrics,sign_accuracy,90m,0.5024
-39,metrics,sign_accuracy,120m,0.4895
-40,limitations,limitation_1,,Crypto is unvalidated and must use a separate calibration profile.
-41,limitations,limitation_2,,Analog center is not validated as standalone directional alpha on unconditional states.
-42,limitations,limitation_3,,q10-q90 is undercovered versus nominal 80%; no silent quantile semantic change is allowed.
-43,limitations,limitation_4,,Drift threshold remains diagnostic only; max_abs_z > 3 did not identify worse forecast quality.
-44,status,status,,READY_FOR_INDEPENDENT_REVIEW_NOT_FOR_PRODUCTION
+﻿section,key,horizon,value
+metadata,profile,,MOEX_STOCKS_CAL_V1
+metadata,architecture_sha256,,d43c71e82f40b519760dbc97a09c0e13e0dc436aa4610c062852a2bceb024f3a
+metadata,market,,MOEX_STOCKS
+metadata,instruments,,"SBER,ROSN,GAZP,NVTK,LKOH,OZON"
+window,trading_days,,180
+window,from,,2026-01-26
+window,to,,2026-10-02
+validation,warmup_days,,60
+validation,folds,,4
+validation,fold_days,,30
+validation,cases,,11472
+config,top_k,,20
+config,base_days,,180
+config,sigma,,1.5
+config,half_life_days,,180.0
+config,drift_z_threshold,,3.0
+config,min_n_independent,30m,10
+config,min_n_independent,60m,10
+config,min_n_independent,90m,10
+config,min_n_independent,120m,10
+config,min_weighted_ess,30m,6.0
+config,min_weighted_ess,60m,6.0
+config,min_weighted_ess,90m,6.0
+config,min_weighted_ess,120m,6.0
+metrics,coverage_q10_q90,30m,0.7388
+metrics,coverage_q10_q90,60m,0.7591
+metrics,coverage_q10_q90,90m,0.7591
+metrics,coverage_q10_q90,120m,0.7636
+metrics,default_pooled_coverage,,0.7192
+metrics,candidate_pooled_coverage,,0.7551
+metrics,default_interval_score,,37.3275
+metrics,candidate_interval_score,,34.4936
+metrics,default_median_abs_error_atr,,4.2672
+metrics,candidate_median_abs_error_atr,,4.062
+metrics,default_median_ess,,13.1229
+metrics,candidate_median_ess,,19.8009
+metrics,sign_accuracy,30m,0.4899
+metrics,sign_accuracy,60m,0.4937
+metrics,sign_accuracy,90m,0.5024
+metrics,sign_accuracy,120m,0.4895
+limitations,limitation_1,,Crypto is unvalidated and must use a separate calibration profile.
+limitations,limitation_2,,Analog center is not validated as standalone directional alpha on unconditional states.
+limitations,limitation_3,,q10-q90 is undercovered versus nominal 80%; no silent quantile semantic change is allowed.
+limitations,limitation_4,,Drift threshold remains diagnostic only; max_abs_z > 3 did not identify worse forecast quality.
+status,status,,READY_FOR_INDEPENDENT_REVIEW_NOT_FOR_PRODUCTION
