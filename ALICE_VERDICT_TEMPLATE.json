@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "reviewer": "Alice",
+  "source": {
+    "repository": "https://github.com/lehakolesnikov774-code/strategy-council-review",
+    "branch": "main",
+    "commit_sha": "<exact reviewed commit SHA>"
+  },
+  "reviewed_at_utc": "<ISO-8601 timestamp>",
+  "integrity": {
+    "manifest_sha256_verified": false,
+    "files": {
+      "forecaster_v11_marfa.py": "<sha256>",
+      "test_forecaster_v11_marfa.py": "<sha256>",
+      "moex_stocks_calibration_candidate_v1.csv": "<sha256>",
+      "run_forecaster_e2e_v1.py": "<sha256>"
+    }
+  },
+  "checks": {
+    "py_compile": {
+      "status": "PASS|FAIL",
+      "stdout": "<factual stdout or concise exact result>"
+    },
+    "pytest": {
+      "status": "PASS|FAIL",
+      "passed": 0,
+      "failed": 0,
+      "stdout": "<factual stdout or concise exact result>"
+    },
+    "e2e": {
+      "status": "PASS|FAIL|NOT_RUN",
+      "stdout": "<factual stdout or reason not run>"
+    }
+  },
+  "findings": [
+    {
+      "id": "A-001",
+      "severity": "BLOCKER|MAJOR|MINOR|NOTE",
+      "file": "<filename>",
+      "location": "<line/function/contract>",
+      "summary": "<short defect statement>",
+      "evidence": "<reproducible evidence>",
+      "recommended_action": "<minimal action>"
+    }
+  ],
+  "verdict": "APPROVE|CHANGES_REQUIRED|BLOCK",
+  "architecture_consensus": "CONFIRMED|REOPEN_REQUIRED",
+  "calibration_status": "NOT_FOR_PRODUCTION|READY_FOR_SHADOW|READY_FOR_PRODUCTION",
+  "consensus_eligible": false,
+  "notes": "<optional concise note>"
+}
