@@ -122,3 +122,7 @@ completion/stale/missing rates, spread/liquidity, tape coverage, OI freshness, s
 - https://www.moex.com/ru/derivatives/unified-trading-session — ЕТС, клиринг, ДСВД, экспирация; расхождение утренних часов требует as-of проверки.
 - https://moexalgo.github.io/docs/description/realtime/ — поля futures M1/trades/specs/OI/MINSTEP/STEPPRICE/INITIALMARGIN.
 - trading-signal-bot commit df7e518b0712644a748e19e48cdbd9825260bec9, node-bot/bot_v23.js, strategy_council_rc7.js, bks_tape_hub.js.
+
+
+## Фактический raw запуск 2026-10-05
+Raw collector deployed SUCCESS: 2e4ba2bfa9c421a726056591ce2a00f4f432d49a. Два автоматических цикла и readback целостность проверены; 24 records, из них12 observations и12 NO_CLOSED_BARS. Свечей runtime пока0, flow NO_DATA. Полный frozen forecast/outcome collector остаётся незавершённым. Точный отчёт и границы: FUTURES_LAUNCH_2026-10-05.md.

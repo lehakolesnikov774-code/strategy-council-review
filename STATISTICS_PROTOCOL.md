@@ -103,3 +103,7 @@ Crypto: NOT_FOR_PRODUCTION, календарь 24/7 и отдельная кал
 лентa/delta с coverage, OI и basis availability; entry после доставки, structural stops/ticks/ATR,
 real/paper fills, причины отказов и отмен после входа. Риск-отказ не удаляет наблюдение направления.
 Статус DESIGN_ONLY / NOT_FOR_PRODUCTION, внедрение и реальный futures E2E не подтверждены.
+
+
+## Фактический raw запуск 2026-10-05
+Raw collector deployed SUCCESS: 2e4ba2bfa9c421a726056591ce2a00f4f432d49a. Два автоматических цикла и readback целостность проверены; 24 records, из них12 observations и12 NO_CLOSED_BARS. Свечей runtime пока0, flow NO_DATA. Полный frozen forecast/outcome collector остаётся незавершённым. Точный отчёт и границы: FUTURES_LAUNCH_2026-10-05.md.
