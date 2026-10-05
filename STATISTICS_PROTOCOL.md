@@ -93,3 +93,13 @@ Council v11 развёрнут в shadow для SBER, ROSN, GAZP, NVTK, LKOH, OZ
 полный frozen snapshot/outcome collector ещё требуется реализовать и проверить.
 9 MOEX из вчерашней повестки: дополнительные 3 не установлены.
 Crypto: NOT_FOR_PRODUCTION, календарь 24/7 и отдельная калибровка ещё требуют реализации.
+
+## Фьючерсы: дополнение 2026-10-05
+Отдельный FUTURES_PROFILE.md и dataset_futures_v1.csv, та же картотека.
+Общий протокол также распространяется на фьючерсы после собственного market-data/calendar preflight.
+Они не входят в нынешний scheduled Council: adapter ограничен шестью акциями.
+Задача подключения futures research collector не ждёт crypto calibration.
+Фьючерсные дополнения: exact контракт/expiry/specs/ГО и tick value as-of; архив календаря ЕТС/ДСВД;
+лентa/delta с coverage, OI и basis availability; entry после доставки, structural stops/ticks/ATR,
+real/paper fills, причины отказов и отмен после входа. Риск-отказ не удаляет наблюдение направления.
+Статус DESIGN_ONLY / NOT_FOR_PRODUCTION, внедрение и реальный futures E2E не подтверждены.

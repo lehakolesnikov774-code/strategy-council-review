@@ -48,3 +48,16 @@ MAJOR-2: FAIL_BOTH counted by runner-v1 quality predicate
 4. Затем walk-forward и калибровка крипты.
 Первый день — smoke, не калибровка. Не обещать число зрелых меток заранее.
 Полный E2E на реальном датасете сейчас NOT_RUN.
+
+## Фьючерсное расширение
+Отдельный dataset_futures_v1.csv. Общие6колонок+feature__11+cross_session/fwd_ret/fwd_available_at сохраняются.
+Дополнительные audit поля: exchange,board,instrument_type=futures,resolved_secid,expiry_at,
+underlying_id,contract_spec_sha,calendar_sha,horizon_clock=TRADING_MINUTES,
+exchange_calendar_date,exchange_trading_day_id,bar_type,trading_status,
+trading_target_ts_30m/60m/90m/120m,wallclock_reference_ts_30m/60m/90m/120m,
+metadata/input_snapshot ids,availability/quality.
+Лента/OI/ГО/basis/tradeids хранятся в sidecar с join по snapshot_id; новые feature__ не добавлять в frozen v11.
+Пул exact контракт, не underlying и не склейка expiry. Один календарь/профиль на прогон.
+Runner v1 создаёт TradingCalendar() сам: futures calendar selection ещё надо реализовать и проверить,
+одного разделения CSV недостаточно. Не запускать futures E2E со stock calendar под видом валидации.
+Реальный futures dataset и E2E в этом обсуждении NOT_RUN. Подробности в FUTURES_PROFILE.md.
