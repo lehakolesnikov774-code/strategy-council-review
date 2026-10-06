@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forecast-bot.local/schemas/alice-council-result-v0.1.1.json",
+  "title": "ALICE_COUNCIL_AGENT Council Result",
+  "type": "object",
+  "$comment": "protocol_version refers to the versioned protocol document ALICE_COUNCIL_PROTOCOL_v0.1.md and evolves independently from instruction_version. COMPLETED means analysis finished without declaring a two-party aggregate agreement; CONSENSUS requires explicit materially agreeing Alice and Marfa positions; DISAGREEMENT is mutually exclusive with CONSENSUS for the same round.",
+  "additionalProperties": false,
+  "required": [
+    "response_id",
+    "timestamp",
+    "protocol_version",
+    "instruction_version",
+    "status",
+    "evidence_status",
+    "confidence",
+    "confidence_rationale",
+    "alice_opinion",
+    "marfa_opinion",
+    "analysis",
+    "evidence",
+    "assumptions",
+    "open_questions",
+    "verdict",
+    "disagreement_reason",
+    "required_action",
+    "decision_owner",
+    "requires_human_approval"
+  ],
+  "properties": {
+    "response_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "$comment": "Must be the actual response creation time in RFC3339 UTC; never copy a hard-coded example timestamp."
+    },
+    "protocol_version": {
+      "const": "0.1",
+      "$comment": "Version of ALICE_COUNCIL_PROTOCOL_v0.1.md. It is independent from instruction_version."
+    },
+    "instruction_version": {
+      "const": "0.1.1"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "COMPLETED",
+        "CONSENSUS",
+        "DISAGREEMENT",
+        "NEED_DATA",
+        "CONTRADICTORY",
+        "UNCERTAIN",
+        "ERROR"
+      ],
+      "$comment": "COMPLETED is a terminal analysis result without a two-party consensus claim. CONSENSUS requires both explicit positions to materially agree. DISAGREEMENT means the explicit positions materially conflict and therefore cannot be CONSENSUS in the same round."
+    },
+    "evidence_status": {
+      "type": "string",
+      "enum": [
+        "HYPOTHESIS_FOREIGN",
+        "SUPPORTED_MOEX",
+        "CONFIRMED",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW"]
+    },
+    "confidence_rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "alice_opinion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "marfa_opinion": {
+      "type": ["string", "null"]
+    },
+    "analysis": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "verdict": {
+      "type": "string",
+      "minLength": 1
+    },
+    "disagreement_reason": {
+      "type": ["string", "null"]
+    },
+    "required_action": {
+      "type": ["string", "null"]
+    },
+    "decision_owner": {
+      "const": "ALEXEY"
+    },
+    "requires_human_approval": {
+      "type": "boolean",
+      "$comment": "Must be true when required_action entails repository writes, trading-code changes, production changes, trading actions, infrastructure mutations, secret changes, or another consequential external action."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"status": {"const": "CONSENSUS"}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "marfa_opinion": {"type": "string", "minLength": 1},
+          "alice_opinion": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"status": {"const": "DISAGREEMENT"}},
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "marfa_opinion": {"type": "string", "minLength": 1},
+          "disagreement_reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  ]
+}
